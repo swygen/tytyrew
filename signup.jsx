@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 // Firebase config
 const firebaseConfig = {
@@ -35,16 +27,8 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  // Load Lottie script once
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
-    script.type = "module";
-    document.body.appendChild(script);
-  }, []);
-
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.id]: e.target.value});
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async () => {
