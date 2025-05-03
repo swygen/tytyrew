@@ -203,3 +203,198 @@
 
 </body>
 </html>
+<!-- শুরু: প্রিমিয়াম নিউজ প্যানেল -->
+<div class="premium-news-panel">
+  <div class="pnp-logo">
+    <img src="https://i.postimg.cc/RZ49Vykn/20240110-084759.jpg" alt="Logo">
+  </div>
+  <div class="pnp-container">
+    <h1>আজকের প্রিমিয়াম নিউজ</h1>
+    <div id="pnp-news"></div>
+  </div>
+</div>
+
+<style>
+.premium-news-panel * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.premium-news-panel {
+  background: #f4f4f4;
+  padding: 30px 10px;
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+.pnp-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pnp-logo img {
+  width: 180px;
+  border-radius: 10px;
+}
+
+.pnp-container {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.pnp-container h1 {
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.pnp-item {
+  background: #fff;
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.pnp-item:hover {
+  transform: translateY(-5px);
+}
+
+.pnp-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.pnp-item iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  margin-top: 15px;
+  border: none;
+}
+
+.pnp-item h2 {
+  font-size: 26px;
+  color: #222;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.pnp-item p {
+  font-size: 16px;
+  color: #444;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.pnp-full-news {
+  display: none;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.pnp-toggle {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.pnp-share {
+  background: #ff6f61;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  display: block;
+  margin: 15px auto 0;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .pnp-container h1 { font-size: 24px; }
+  .pnp-item h2 { font-size: 20px; }
+}
+</style>
+
+<script>
+fetch('https://sheetdb.io/api/v1/93b4nowtrr4qh')
+  .then(res => res.json())
+  .then(data => {
+    let html = '';
+    data.forEach((item, index) => {
+      const mediaURL = item["Img URL "]?.trim() || "";
+      let mediaContent = "";
+      let previewImage = "";
+
+      // Video handling
+      if (mediaURL.includes("youtube.com/watch?v=")) {
+        const videoId = mediaURL.split("v=")[1].split("&")[0];
+        previewImage = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+        mediaContent = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
+      } else if (mediaURL.includes("youtu.be/")) {
+        const videoId = mediaURL.split("youtu.be/")[1];
+        previewImage = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+        mediaContent = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
+      } else if (mediaURL.match(/\.(jpeg|jpg|gif|png|webp)$/)) {
+        previewImage = mediaURL;
+        mediaContent = `<img src="${mediaURL}" alt="${item["Title "]}" />`;
+      } else {
+        previewImage = "https://i.postimg.cc/XJNLw26M/breaking-news-1708738388.jpg"; // Default image if no valid image URL
+      }
+
+      const postTitle = item["Title "] || "";
+      const postFullNews = item["Full News "] || "";
+
+      html += `
+        <div class="pnp-item" id="post-${index}">
+          <h2>${postTitle}</h2>
+          ${mediaContent}
+          <p>${item["Description "]}</p>
+          <div class="pnp-full-news">${postFullNews}</div>
+          <span class="pnp-toggle" onclick="toggleBanglaNews(this)">বিস্তারিত পড়ুন</span>
+          <button class="pnp-share" onclick="sharePost('${postTitle.replace(/'/g, "\\'")}', '${previewImage}', '${window.location.href}')">শেয়ার করুন</button>
+        </div>
+      `;
+    });
+    document.getElementById('pnp-news').innerHTML = html;
+  });
+
+function toggleBanglaNews(btn) {
+  const fullNews = btn.previousElementSibling;
+  if (fullNews.style.display === "none" || fullNews.style.display === "") {
+    fullNews.style.display = "block";
+    btn.innerText = "বন্ধ করুন";
+  } else {
+    fullNews.style.display = "none";
+    btn.innerText = "বিস্তারিত পড়ুন";
+  }
+}
+
+function sharePost(title, imageUrl, url) {
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: title,
+      url: url
+    }).catch((error) => {
+      console.error("Sharing failed:", error);
+    });
+  } else {
+    const shareText = `${title}\n\n${url}`;
+    navigator.clipboard.writeText(shareText).then(() => {
+      alert("শেয়ার লিংক কপি হয়ে গেছে!");
+    });
+  }
+}
+</script>
+<!-- শেষ: প্রিমিয়াম নিউজ প্যানেল -->
