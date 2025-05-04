@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HGZY Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+      padding: 30px 15px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .banner {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin: 15px auto;
+      display: block;
+    }
+    .section {
+      padding: 20px 15px 80px; /* space for bottom nav */
+    }
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #ff4b2b;
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .option-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333;
+    }
+    .option-card:hover {
+      transform: translateY(-5px);
+    }
+    .option-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .option-card i {
+      font-size: 20px;
+      color: #ff4b2b;
+      margin-bottom: 5px;
+    }
+    .option-card div {
+      font-size: 14px;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+    .bottom-nav a {
+      color: #ff4b2b;
+      font-size: 20px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>B2-WIN Entertainment</h1>
+  <p>Model brand, reputation guarantee</p>
+</header>
+
+<img src="https://i.postimg.cc/C54K5hkP/20250502-172612.jpg" alt="Banner" class="banner" />
+
+<div class="section">
+  <h2>Explore Options</h2>
+  <div class="option-grid">
+    <a href="lottery.html" class="option-card">
+      <img src="https://i.postimg.cc/Z5rhSbtX/charisma.png" alt="Popular">
+      <div><i class="fas fa-star"></i> Popular</div>
+    </a>
+    <a href="lottery.html" class="option-card">
+      <img src="https://i.postimg.cc/wxNb1W3d/ticket.png" alt="Lottery">
+      <div><i class="fas fa-ticket-alt"></i> Lottery</div>
+    </a>
+    <a href="#" class="option-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Store">
+      <div><i class="fas fa-store"></i> Store</div>
+    </a>
+    <a href="casino.html" class="option-card">
+      <img src="https://i.postimg.cc/Y0y1nBCS/jackpot-machine.png" alt="Casino">
+      <div><i class="fas fa-dice"></i> Casino</div>
+    </a>
+    <a href="#" class="option-card">
+      <img src="https://i.postimg.cc/1z5zvCfg/billiard-logo-design-template-23-2150883896.jpg" alt="Sports">
+      <div><i class="fas fa-futbol"></i> Sports</div>
+    </a>
+    <a href="rummy.html" class="option-card">
+      <img src="https://i.postimg.cc/RVZmw5tH/card.png" alt="Rummy">
+      <div><i class="fas fa-chess"></i> Rummy</div>
+    </a>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="dashboard.html"><i class="fas fa-home"></i></a>
+  <a href="view.html"><i class="fas fa-th-large"></i></a>
+  <a href="free.html"><i class="fas fa-gift"></i></a>
+  <a href="wallet.html"><i class="fas fa-wallet"></i></a>
+  <a href="user.html"><i class="fas fa-user"></i></a>
+</nav>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B2-WIN Casino Popup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .casino-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .casino-modal-content {
+      background: linear-gradient(145deg, #1f1c2c, #928dab);
+      color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .casino-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .casino-modal-content h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .casino-modal-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .do-not-show {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .do-not-show input {
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    .casino-modal-content button {
+      padding: 10px 20px;
+      background: #ff9800;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .casino-modal-content button:hover {
+      background: #e68900;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="casinoPopup" class="casino-modal">
+  <div class="casino-modal-content">
+    <img src="https://i.postimg.cc/bv0L0RsF/3d-rendering-casino-elements-23-2149586708.webp" alt="Casino Logo" class="casino-logo" />
+
+    <h2>স্বাগতম B2-WIN CASINO-তে!</h2>
+    <p>
+      এখানে শুরু হোক আপনার উত্তেজনাপূর্ণ জয়ের যাত্রা!<br><br>
+      <strong>নিয়মাবলি:</strong><br>
+      সর্বনিম্ন আমানত: মাত্র ১০০ টাকা<br>
+      ন্যূনতম উত্তোলন: ৪০০ টাকা<br><br>
+      <strong>বিশেষ অফার:</strong><br>
+      প্রথমবার যদি আপনি ১৫০০ টাকা বা তার বেশি আমানত করেন, তবে পাচ্ছেন সরাসরি ৫০% বোনাস!<br><br>
+      <strong>আরও থাকছে:</strong><br>
+      বন্ধুদের রেফার করুন এবং রেফার বোনাস উপভোগ করুন প্রতিবার তারা জয়েন করলেই!<br><br>
+      <strong>B2-WIN CASINO</strong> — যেখানে মজা, পুরস্কার এবং সুযোগ সব একসাথে!<br>
+      আজই শুরু করুন আপনার লাকি জার্নি!
+    </p>
+
+    <label class="do-not-show">
+      <input type="checkbox" id="doNotShow"> ২৪ ঘন্টা মনে করাবেন না
+    </label>
+    <button onclick="closeCasinoPopup()">ঠিক আছে</button>
+  </div>
+</div>
+
+<script>
+  function shouldShowPopup() {
+    const lastClosed = localStorage.getItem("casinoPopupClosed");
+    if (!lastClosed) return true;
+    const now = new Date().getTime();
+    return now - parseInt(lastClosed) > 24 * 60 * 60 * 1000;
+  }
+
+  function showCasinoPopup() {
+    if (shouldShowPopup()) {
+      document.getElementById("casinoPopup").style.display = "flex";
+    }
+  }
+
+  function closeCasinoPopup() {
+    if (document.getElementById("doNotShow").checked) {
+      localStorage.setItem("casinoPopupClosed", new Date().getTime());
+    }
+    document.getElementById("casinoPopup").style.display = "none";
+  }
+
+  window.onload = showCasinoPopup;
+</script>
+
+</body>
+</html>
